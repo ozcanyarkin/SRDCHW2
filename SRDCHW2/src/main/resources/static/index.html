@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Messaging App</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="header">
+  <h1>Messaging App</h1>
+  <div id="headerButtons" class="hidden header-buttons">
+    <button id="sendMsgBtn">Send a Message</button>
+    <button id="getInboxBtn">Get Inbox</button>
+    <button id="getOutboxBtn">Get Outbox</button>
+    <button id="createUsrBtn" class="hidden">Create a User</button>
+    <button id="viewUserInfoBtn">View User Information</button>
+    <button id="listAllUsersBtn" class="hidden">List All Users</button>
+    <button id="logoutBtn">Logout</button>
+  </div>
+</div>
+
+<div class="container">
+  <h1 id="headerMessage">Welcome to Messaging App, please login</h1>
+  <p id="loginError" class="hidden error-message">Login failed. Please check your username or password.</p>
+
+  <form id="loginForm">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    <button type="submit">Login</button>
+  </form>
+
+  <div id="mainContent">
+    <h2 id="welcomeMessage" class="larger"></h2>
+    <div id="userInfoDisplay" class="hidden">
+      <h3>Current User Information</h3>
+      <p>Username: <span id="currentUsername"></span></p>
+      <p>Name: <span id="currentName"></span></p>
+      <p>Surname: <span id="currentSurname"></span></p>
+      <p>Email: <span id="currentEmail"></span></p>
+      <p>Address: <span id="currentAddress"></span></p>
+      <p>Gender: <span id="currentGender"></span></p>
+      <p>Birthdate: <span id="currentBirthdate"></span></p>
+      <p>Admin: <span id="currentAdmin"></span></p>
+    </div>
+
+    <div id="updateUsrForm" class="hidden">
+      <h3>Update User Information</h3>
+      <p id="updateUsrSuccess" class="hidden success-message">User Updated!</p>
+      <form id="updateUserForm">
+        <label for="updateUsername">Username:</label>
+        <select id="updateUsername" name="updateUsername" required></select>
+        <label for="updateName">Name:</label>
+        <input type="text" id="updateName" name="updateName" required>
+        <label for="updateSurname">Surname:</label>
+        <input type="text" id="updateSurname" name="updateSurname" required>
+        <label for="updatePassword">Password:</label>
+        <input type="password" id="updatePassword" name="updatePassword" required>
+        <label for="updateEmail">Email:</label>
+        <input type="email" id="updateEmail" name="updateEmail">
+        <label for="updateAddress">Address:</label>
+        <input type="text" id="updateAddress" name="updateAddress">
+        <label for="updateGender">Gender:</label>
+        <input type="text" id="updateGender" name="updateGender">
+        <label for="updateBirthdate">Birthdate:</label>
+        <input type="date" id="updateBirthdate" name="updateBirthdate">
+        <label for="updateAdmin">Admin:</label>
+        <input type="checkbox" id="updateAdmin" name="updateAdmin">
+        <button type="submit">Update User</button>
+      </form>
+    </div>
+
+    <div id="inboxForm" class="hidden">
+      <h2>Inbox Messages</h2>
+      <p id="inboxEmpty" class="hidden ex1 error-message">Inbox Empty!</p>
+      <div id="inboxInside" class="hidden">
+        <div class="filter-container">
+          <select id="filterFieldInbox">
+            <option value="sender">Sender</option>
+            <option value="title">Title</option>
+            <option value="body">Message</option>
+            <option value="timestamp">Time Sent</option>
+          </select>
+          <input type="text" id="filterValueInbox" placeholder="Filter value">
+          <button id="filterButtonInbox">Filter</button>
+          <button id="sortInboxAscBtn">&#x25BC;</button>
+          <button id="sortInboxDescBtn">&#x25B2;</button>
+        </div>
+        <table id="inboxMessages" class="message-table">
+          <thead>
+          <tr>
+            <th>From</th>
+            <th>Title</th>
+            <th>Message</th>
+            <th>Receive Time</th>
+          </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <div id="inboxPagination" class="hidden">
+          <button id="prevInboxPage" class="hidden">Previous</button>
+          <span id="inboxPageInfo">Page 1 of 1</span>
+          <button id="nextInboxPage" class="hidden">Next</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="outboxForm" class="hidden">
+      <h2>Outbox Messages</h2>
+      <p id="outboxEmpty" class="hidden ex1 error-message">Outbox Empty!</p>
+      <div id="outboxInside" class="hidden">
+        <div class="filter-container">
+          <select id="filterFieldOutbox">
+            <option value="receiver">Receiver</option>
+            <option value="title">Title</option>
+            <option value="body">Message</option>
+            <option value="timestamp">Time Sent</option>
+          </select>
+          <input type="text" id="filterValueOutbox" placeholder="Filter value">
+          <button id="filterButtonOutbox">Filter</button>
+          <button id="sortOutboxAscBtn">&#x25BC;</button>
+          <button id="sortOutboxDescBtn">&#x25B2;</button>
+        </div>
+        <table id="outboxMessages" class="message-table">
+          <thead>
+          <tr>
+            <th>To</th>
+            <th>Title</th>
+            <th>Message</th>
+            <th>Send Time</th>
+          </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <div id="outboxPagination" class="hidden">
+          <button id="prevOutboxPage" class="hidden">Previous</button>
+          <span id="outboxPageInfo">Page 1 of 1</span>
+          <button id="nextOutboxPage" class="hidden">Next</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="listAllUsersForm" class="hidden">
+      <h2>All Users</h2>
+      <div class="filter-container">
+        <select id="filterField">
+          <option value="username">Username</option>
+          <option value="name">Name</option>
+          <option value="surname">Surname</option>
+          <option value="email">Email</option>
+          <option value="address">Address</option>
+          <option value="gender">Gender</option>
+          <option value="birthDate">Birth Date</option>
+          <option value="admin">Admin</option>
+        </select>
+        <input type="text" id="filterValue" placeholder="Filter value">
+        <button id="filterButton">Filter</button>
+      </div>
+      <table id="allUsersList" class="message-table">
+        <thead>
+        <tr>
+          <th>Username</th>
+          <th>Name</th>
+          <th>Surname</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th>Gender</th>
+          <th>Birthdate</th>
+          <th>Admin</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div id="userPagination" class="hidden">
+        <button id="prevUserPage" class="hidden">Previous</button>
+        <span id="userPageInfo">Page 1 of 1</span>
+        <button id="nextUserPage" class="hidden">Next</button>
+      </div>
+    </div>
+
+    <div id="deleteUsrForm" class="hidden">
+      <h3>Delete User</h3>
+      <p id="deleteUsrSuccess" class="hidden success-message">User Deleted!</p>
+      <form id="deleteUserForm">
+        <label for="deleteUsername">Username:</label>
+        <select id="deleteUsername" name="deleteUsername" required></select>
+        <button type="submit">Delete User</button>
+      </form>
+    </div>
+
+    <div id="createUsrForm" class="hidden">
+      <h3>Create User</h3>
+      <p id="createUsrSuccess" class="hidden success-message">User Created!</p>
+      <p id="createUsrError" class="hidden error-message">Username already in use, please try a different username.</p>
+      <form id="createUserForm">
+        <label for="newUsername">Username:</label>
+        <input type="text" id="newUsername" name="newUsername" required>
+        <label for="newName">Name:</label>
+        <input type="text" id="newName" name="newName" required>
+        <label for="newSurname">Surname:</label>
+        <input type="text" id="newSurname" name="newSurname" required>
+        <label for="newPassword">Password:</label>
+        <input type="password" id="newPassword" name="newPassword" required>
+        <label for="newEmail">Email:</label>
+        <input type="email" id="newEmail" name="newEmail" required>
+        <label for="newAddress">Address:</label>
+        <input type="text" id="newAddress" name="newAddress" required>
+        <label for="newGender">Gender:</label>
+        <input type="text" id="newGender" name="newGender" required>
+        <label for="newBirthdate">Birthdate:</label>
+        <input type="date" id="newBirthdate" name="newBirthdate" required>
+        <label for="newAdmin">Admin:</label>
+        <input type="checkbox" id="newAdmin" name="newAdmin">
+        <button type="submit">Create User</button>
+      </form>
+    </div>
+
+    <div id="sendMessageForm" class="hidden">
+      <h3>Send a Message</h3>
+      <p id="sendMsgSuccess" class="hidden success-message">Message sent!</p>
+      <p id="sendMsgError" class="hidden error-message">User does not exist, please try again.</p>
+      <form id="sendMsgForm">
+        <label for="receiver">Receiver:</label>
+        <input type="text" id="receiver" name="receiver" required>
+        <label for="title">Title:</label>
+        <input type="title" id="title" name="title" required>
+        <label for="messageContent">Message:</label>
+        <textarea id="messageContent" name="messageContent" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+
+    <div id="alertBox" class="hidden">
+      <p id="alertMessage"></p>
+    </div>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

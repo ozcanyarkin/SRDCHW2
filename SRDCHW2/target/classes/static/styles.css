@@ -1,0 +1,244 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #007BFF;
+    color: white;
+    padding: 10px;
+}
+
+.header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #0056b3;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.header-buttons button:hover {
+    background-color: #003d80;
+}
+
+.header h1 {
+    margin-left: 20px;
+    font-size: 24px;
+}
+
+.container {
+    width: 90%;
+    max-width: 1500px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1, h2, h3 {
+    color: #333;
+}
+
+.hidden {
+    display: none;
+}
+
+.error-message {
+    color: red;
+}
+
+.success-message {
+    color: green;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+.ex1 {
+    font-size: 30px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="date"],
+select,
+textarea {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.menu-buttons {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.menu-buttons button {
+    width: auto;
+    padding: 10px;
+    margin: 5px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.message {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f9f9f9;
+}
+
+.message p {
+    margin: 5px 0;
+}
+
+#mainContent {
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 4px;
+}
+
+th, td {
+    padding: 20px;
+}
+
+h2.larger {
+    font-size: 4em;
+}
+
+#alertBox {
+    position: fixed;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 123, 255, 0.9);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    text-align: center;
+    width: 80%;
+    max-width: 400px;
+}
+
+#alertMessage {
+    margin: 0;
+    font-size: 18px;
+}
+
+.filter-container {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+#filterField, #filterValue {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#filterButton {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#filterButton:hover {
+    background-color: #0056b3;
+}
+
+
+#filterFieldInbox, #filterValueInbox, #filterFieldOutbox, #filterValueOutbox {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#filterButtonInbox, #filterButtonOutbox {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#filterButtonInbox:hover, #filterButtonOutbox:hover {
+    background-color: #0056b3;
+}
+
+.sort-buttons {
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.sort-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.sort-buttons button:hover {
+    background-color: #0056b3;
+}
